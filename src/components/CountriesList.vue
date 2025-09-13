@@ -26,6 +26,8 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
     name: "CountriesList",
     data() {
@@ -49,7 +51,17 @@
 
       editRow() {
         alert("Función en desarrollo...")
-      }
+      },
+
+      getCountries() {
+        axios.get("https://localhost:7071/api/country").then((response) => {
+          this.countries = response.data;
+        });
+      },
+    },
+
+    created: function() {
+      this.getCountries();
     },
   }
 </script>
