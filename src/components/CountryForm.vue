@@ -7,6 +7,7 @@
           <label for="nombre">Nombre:</label>
           <input v-model="formData.Name" type="text" id="name" class="form-control" required/>
         </div>
+        
         <div class="form-group">
           <label for="continente">Continente:</label>
           <select v-model="formData.Continent" id="continente" required class="form-control">
@@ -19,12 +20,15 @@
             <option>Antártida</option>
           </select>
         </div>
+
         <div class="form-group">
           <label for="idioma">Idioma:</label>
           <input v-model="formData.Language" type="text" id="idioma" class="form-control" required/>
         </div>
-        <div>
+
+        <div id="buttons">
           <button type="submit" class="btn btn-success btn-block">Guardar</button>
+          <button class="btn btn-success btn-block" @click="goBack()">Cancelar</button>
         </div>
       </form>
     </div>
@@ -55,10 +59,23 @@ import axios from 'axios';
           console.log(error);
         });
       },
+
+      goBack() {
+        this.$router.back();
+      }
     },
   };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+#buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
 
+#buttons > :nth-child(2){
+  background: rgb(90, 90, 219);
+  border-color: rgb(90, 90, 219);
+}
 </style>
